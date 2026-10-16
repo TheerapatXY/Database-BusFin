@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>แหล่งข้อมูล: Microsoft × Nokia</title>
+<title>Database แหล่งข้อมูล: Microsoft × Nokia</title>
 <style>
 :root{--bg:#f7f7f5;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--bd:#dcdcd6;--ac:#0b5fd1;--ok:#17803d;--warn:#b45309;--bad:#b91c1c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fg:#ececea;--mut:#9a9a94;--card:#201f1e;--bd:#3a3936;--ac:#6ea8ff;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;color-scheme:dark}}
@@ -25,9 +25,9 @@ tr:last-child td{border-bottom:0}
 a{color:var(--ac)}.note{color:var(--mut);font-size:13px;margin-top:12px}
 .hide{display:none}
 </style></head><body><div class="w">
-<h1>แหล่งข้อมูล: Microsoft × Nokia</h1>
-<p class="s">รวม 18 ลิงก์ ค้นหา กรองได้จ้า (คลิกหัวคอลัมน์เพื่อเรียงน้าา)</p>
-<div class="tabs"><button id="t1" class="on">แหล่งข้อมูล (18)</button><button id="t2">อันนี้Aiสรุปแบบไวๆ</button></div>
+<h1>Database แหล่งข้อมูล: Microsoft × Nokia</h1>
+<p class="s">รวม 18 link ค้นหาได้ กรองได้ (คลิกหัวคอลัมน์เพื่อเรียงน้าาา)</p>
+<div class="tabs"><button id="t1" class="on">แหล่งข้อมูล (18)</button><button id="t2">อันนี้ Ai สรุปแบบไวๆ</button></div>
 <div class="bar"><input id="q" placeholder="ค้นหา เช่น Nokia, impairment, 2015..."><select id="fty"><option value="">ทุกประเภท</option></select><select id="fyr"><option value="">ทุกปี</option></select><select id="fst"><option value="">ทุกสถานะ</option></select></div>
 <div class="cnt" id="cnt"></div>
 <div class="tw"><table><thead id="th"></thead><tbody id="tb"></tbody></table></div>
@@ -82,8 +82,6 @@ function render(){
  $("th").innerHTML="<tr>"+H[view].map((h,i)=>`<th data-k="${i}">${h}${sort.k===i?(sort.d>0?" ▲":" ▼"):""}</th>`).join("")+"</tr>";
  $("tb").innerHTML=rows.map(r=>isS?`<tr><td>${r[0]}</td><td>${E(r[1])}</td><td>${E(r[2])}</td><td><span class="tg">${E(r[3])}</span></td><td>${r[4]}</td><td class="${stc(r[5])}">${E(r[5])}</td><td>${E(r[6])}</td><td><a href="${E(r[7])}" target="_blank" rel="noopener">เปิด</a></td></tr>`:`<tr>${r.map(c=>`<td>${E(c)}</td>`).join("")}</tr>`).join("")||`<tr><td colspan="8">ไม่พบข้อมูล</td></tr>`;
  $("cnt").textContent=`แสดง ${rows.length} รายการ`;
- $("nt").textContent=isS?"หมายเหตุ: ใช้ Ai อ่านได้นะ";
-}
 document.addEventListener("click",e=>{const t=e.target.closest("th");if(t){const k=+t.dataset.k;sort=sort.k===k?{k,d:-sort.d}:{k,d:1};render()}});
 ["q","fty","fyr","fst"].forEach(i=>$(i).addEventListener("input",render));
 $("t1").onclick=()=>{view="s";sort={k:null,d:1};$("t1").className="on";$("t2").className="";render()};
