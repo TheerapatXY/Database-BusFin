@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ฐานข้อมูลแหล่งข้อมูล: Microsoft × Nokia</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--bd:#dcdcd6;--ac:#0b5fd1;--ok:#17803d;--warn:#b45309;--bad:#b91c1c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fg:#ececea;--mut:#9a9a94;--card:#201f1e;--bd:#3a3936;--ac:#6ea8ff;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161615;--fg:#ececea;--mut:#9a9a94;--card:#201f1e;--bd:#3a3936;--ac:#6ea8ff;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 "Noto Sans Thai",system-ui,sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:20px 16px}
+h1{font-size:22px;margin:0 0 4px}p.s{color:var(--mut);margin:0 0 16px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:7px 14px;border-radius:8px;cursor:pointer;font:inherit}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.bar input,.bar select{padding:8px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--fg);font:inherit}
+.bar input{flex:1;min-width:200px}
+.cnt{color:var(--mut);font-size:13px;margin-bottom:8px}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:820px}
+th,td{padding:9px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--bd);font-size:14px}
+th{cursor:pointer;user-select:none;white-space:nowrap;background:var(--bg);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+.tg{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;border:1px solid var(--bd);white-space:nowrap}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+a{color:var(--ac)}.note{color:var(--mut);font-size:13px;margin-top:12px}
+.hide{display:none}
+</style></head><body><div class="w">
+<h1>ฐานข้อมูลแหล่งข้อมูล: Microsoft × Nokia</h1>
+<p class="s">รวม 18 ลิงก์ ค้นหา กรอง และเรียงลำดับได้ (คลิกหัวคอลัมน์เพื่อเรียง)</p>
+<div class="tabs"><button id="t1" class="on">แหล่งข้อมูล (18)</button><button id="t2">ข้อเท็จจริงสำคัญ</button></div>
+<div class="bar"><input id="q" placeholder="ค้นหา เช่น Nokia, impairment, 2015..."><select id="fty"><option value="">ทุกประเภท</option></select><select id="fyr"><option value="">ทุกปี</option></select><select id="fst"><option value="">ทุกสถานะ</option></select></div>
+<div class="cnt" id="cnt"></div>
+<div class="tw"><table><thead id="th"></thead><tbody id="tb"></tbody></table></div>
+<p class="note" id="nt"></p>
+</div>
+<script>
+const R="อ่านเนื้อหาแล้ว",B="เข้าถึงไม่ได้ (ถูกบล็อก)",U="ยังไม่ได้อ่านเนื้อหา (ข้อมูลจากชื่อ/URL)";
+const S=[
+[1,"Microsoft swallows Nokia's phone business for $7.2 billion","Reuters","ข่าว","2013",B,"ชื่อบทความระบุมูลค่า $7.2 พันล้านดอลลาร์","https://www.reuters.com/article/business/microsoft-swallows-nokias-phone-business-for-72-billion-idUSBRE98202W/"],
+[2,"Media alert: Microsoft to acquire Nokia's Devices & Services business","Microsoft News","แถลงข่าวบริษัท","2013",R,"3 ก.ย. 2013: จ่าย €3.79 พันล้านซื้อธุรกิจ D&S + €1.65 พันล้านสำหรับสิทธิบัตร รวม €5.44 พันล้าน เงินสด; คาดปิดดีล Q1 2014; คาดว่าเพิ่ม EPS ปรับปรุงแล้วตั้งแต่ปีงบ 2015","https://news.microsoft.com/source/2013/09/03/media-alert-microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/"],
+[3,"Microsoft 2015 Annual Report","Microsoft Investor","รายงานประจำปี","2015",U,"รายงานประจำปี FY2015","https://www.microsoft.com/investor/reports/ar15/index.html"],
+[4,"Microsoft 2016 Annual Report","Microsoft Investor","รายงานประจำปี","2016",U,"รายงานประจำปี FY2016","https://www.microsoft.com/investor/reports/ar16/index.html"],
+[5,"Creating Shareholder Value (Alfred Rappaport)","Simon & Schuster","หนังสือ","1998",U,"หนังสือกรอบแนวคิดมูลค่าผู้ถือหุ้น (ปีตามฉบับ ISBN 9780684844107 ต้องตรวจสอบ)","https://www.simonandschuster.com/books/Creating-Shareholder-Value/Alfred-Rappaport/9780684844107"],
+[6,"MSFT FY15 Q4 Form 10-K (.docx)","Microsoft Investor","รายงานประจำปี","2015",U,"แบบ 10-K ปีงบ 2015 (ไฟล์ Word ขนาดใหญ่)","https://www.microsoft.com/investor/reports/ar15/docs/MSFT_FY15Q4_10K.docx"],
+[7,"Microsoft announces restructuring of phone hardware business","Microsoft News","แถลงข่าวบริษัท","2015",R,"8 ก.ค. 2015: ลดตำแหน่งงานสูงสุด 7,800; ตั้งด้อยค่าสินทรัพย์/goodwill ประมาณ $7.6 พันล้าน + ค่าปรับโครงสร้าง $750–850 ล้าน; Nadella: เปลี่ยนจากกลยุทธ์ธุรกิจโทรศัพท์แยกเดี่ยวเป็นการสร้างระบบนิเวศ Windows","https://news.microsoft.com/source/2015/07/08/microsoft-announces-restructuring-of-phone-hardware-business/"],
+[8,"FY2015 Q4 earnings press release & webcast","Microsoft Investor","ผลประกอบการ","2015",U,"ประกาศผลประกอบการ Q4 ปีงบ 2015 (ซึ่งมีรายการด้อยค่า)","https://www.microsoft.com/en-us/investor/earnings/fy-2015-q4/press-release-webcast"],
+[9,"Harvard Business School case (product 81310)","Harvard Business Publishing","เคสศึกษา","ไม่ระบุ",U,"กรณีศึกษา HBS รหัส 81310 (ต้องเปิดดูหัวข้อ/ปี)","https://hbsp.harvard.edu/product/81310-PDF-ENG"],
+[10,"Microsoft swallows Nokia's phone business for $7.2 billion (ฉบับ DE)","Reuters","ข่าว","2013",U,"ข่าวเดียวกับลำดับ 1 อีกเวอร์ชันของ Reuters","https://www.reuters.com/article/world/microsoft-swallows-nokias-phone-business-for-72-billion-idUSDEE98202S/"],
+[11,"Ballmer's phone blunder cost Microsoft $10B","Computerworld","บทวิเคราะห์/ข่าว","ไม่ระบุ",U,"ชื่อบทความระบุความเสียหายราว $10 พันล้าน","https://www.computerworld.com/article/1634268/ballmers-phone-blunder-cost-microsoft-10b.html"],
+[12,"Nokia soft-ly (TechCrunch)","TechCrunch","บทวิเคราะห์/ข่าว","2013",U,"วันที่ 19 พ.ย. 2013 (จาก URL)","https://techcrunch.com/2013/11/19/nokia-soft-ly/"],
+[13,"Microsoft's mobile graveyard: Windows Phone","Stratrix","บทวิเคราะห์ (counterfactual)","ไม่ระบุ",U,"บทวิเคราะห์ย้อนหลังกรณี Windows Phone","https://www.stratrix.com/counterfactuals/microsoft-s-mobile-graveyard-windows-phone"],
+[14,"IJSR paper (SUB154598)","IJSR","งานวิจัย","2015",U,"บทความวิชาการ IJSR vol.4 issue 5 (ปีจากรหัส v4i5)","https://www.ijsr.net/archive/v4i5/SUB154598.pdf"],
+[15,"Nokia completes sale of substantially all of its Devices & Services business to Microsoft","Nokia Newsroom","แถลงข่าวบริษัท","2014",R,"25 เม.ย. 2014: ปิดดีลสำเร็จ; โรงงาน Chennai และ Masan ไม่ถูกโอน; ราคารวมคาดสูงกว่า €5.44 พันล้านเล็กน้อย; Elop และผู้บริหารอีก 4 คนย้ายไป Microsoft","https://www.nokia.com/newsroom/nokia-completes-sale-of-substantially-all-of-its-devices--services-business-to-microsoft/"],
+[16,"Microsoft to acquire Nokia's devices & services business (ฉบับเต็ม)","Microsoft News","แถลงข่าวบริษัท","2013",R,"เงื่อนไขดีล: ~32,000 คนโอนไป Microsoft; ยอดขายส่วนที่โอน €14.9 พันล้าน (~50% ของ Nokia ปี 2012); Lumia 7.4 ล้านเครื่อง และ Mobile Phones 53.7 ล้านเครื่องใน Q2 2013; license สิทธิบัตร 10 ปี; ตั๋วแปลงสภาพ €1.5 พันล้าน","https://news.microsoft.com/source/2013/09/03/microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/"],
+[17,"Nokia Form 6-K (3 ก.ย. 2013) ขาย D&S ให้ Microsoft","SEC EDGAR (Nokia)","เอกสารกำกับดูแล (SEC)","2013",R,"Nokia คาดกำไรจากการขาย ~€3.2 พันล้าน; ค่าธรรมเนียมยกเลิก $750 ล้านหากไม่ผ่านหน่วยงานกำกับ; จะโฟกัส NSN, HERE, Advanced Technologies","https://www.sec.gov/Archives/edgar/data/924613/000110465913067659/a13-20077_16k.htm"],
+[18,"Microsoft Form 8-K Ex.99.1 (8 ก.ค. 2015) ปรับโครงสร้างธุรกิจโทรศัพท์","SEC EDGAR (Microsoft)","เอกสารกำกับดูแล (SEC)","2015",R,"ยื่นต่อ SEC ยืนยันตัวเลข: ลด 7,800 ตำแหน่ง, ด้อยค่า ~$7.6 พันล้าน, ค่าปรับโครงสร้าง $750–850 ล้าน","https://www.sec.gov/Archives/edgar/data/789019/000119312515247530/d54167dex991.htm"]
+];
+const F=[
+["2013-09-03","ประกาศดีล","Microsoft ซื้อธุรกิจ Devices & Services ของ Nokia €3.79 พันล้าน + ใช้สิทธิบัตร €1.65 พันล้าน = €5.44 พันล้าน (เงินสด จากเงินสดต่างประเทศ)","#2"],
+["2013-09-03","เหตุผลเชิงกลยุทธ์","เร่งส่วนแบ่งตลาดและกำไรในโทรศัพท์ ผ่านนวัตกรรม synergies และแบรนด์รวม; Ballmer คาดว่าเพิ่ม adjusted EPS ตั้งแต่ปีงบ 2015","#2"],
+["2014-04-25","ปิดดีล","Nokia แจ้งขายสำเร็จ; ราคารวมคาดสูงกว่า €5.44 พันล้านเล็กน้อยหลังปรับงบดุล; โรงงาน Chennai (อินเดีย) และ Masan (เกาหลี) ไม่ถูกโอน; ผู้บริหาร เช่น Stephen Elop ย้ายไป Microsoft","Nokia"],
+["2015-07-08","ปรับโครงสร้าง","ลดตำแหน่งสูงสุด 7,800 ตำแหน่ง ส่วนใหญ่ในธุรกิจโทรศัพท์","#7"],
+["2015-07-08","ด้อยค่า","บันทึกด้อยค่าสินทรัพย์และ goodwill ของ Phone Hardware ประมาณ $7.6 พันล้าน (ไม่กระทบกระแสเงินสดจากการดำเนินงาน) + ค่าปรับโครงสร้าง $750–850 ล้าน","#7"],
+["2013-09-03","ขอบเขตดีล","~32,000 คนโอนไป Microsoft (4,700 ในฟินแลนด์); ส่วนที่โอนสร้างยอดขาย €14.9 พันล้าน ราว 50% ของ Nokia ปี 2012; Nokia ถือสิทธิบัตรไว้และให้ license 10 ปี","#16, #17"],
+["2013-09-03","เงื่อนไขการเงิน","Nokia คาดกำไรจากการขาย ~€3.2 พันล้าน; ค่าธรรมเนียมยกเลิก $750 ล้านหากไม่ผ่านหน่วยงานกำกับ; ตั๋วแปลงสภาพ €1.5 พันล้าน (3 งวด งวดละ €500 ล้าน)","#16, #17"],
+["2015-07-08","ยืนยันกับ SEC","Form 8-K ของ Microsoft ระบุตัวเลขปรับโครงสร้างและด้อยค่าตรงกับแถลงข่าว","#18"],
+["2015-07-08","ทิศทางใหม่","Nadella: จากการโตธุรกิจโทรศัพท์แยกเดี่ยว เป็นการสร้างระบบนิเวศ Windows รวมอุปกรณ์ของตัวเอง","#7"]
+];
+let view="s",sort={k:null,d:1};
+const $=i=>document.getElementById(i);
+const E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const uniq=i=>[...new Set(S.map(r=>r[i]))];
+[["fty",3],["fyr",4],["fst",5]].forEach(([id,i])=>uniq(i).forEach(v=>$(id).add(new Option(v,v))));
+const H={s:["#","หัวข้อ","แหล่ง","ประเภท","ปี","สถานะ","ข้อมูลสำคัญ","ลิงก์"],f:["วันที่","เหตุการณ์","รายละเอียด","อ้างอิง"]};
+function stc(s){return s===R?"ok":s===B?"bad":"warn"}
+function render(){
+ const q=$("q").value.toLowerCase(),isS=view==="s";
+ ["fty","fyr","fst"].forEach(i=>$(i).classList.toggle("hide",!isS));
+ let rows=(isS?S:F).filter(r=>r.join(" ").toLowerCase().includes(q));
+ if(isS)rows=rows.filter(r=>(!$("fty").value||r[3]===$("fty").value)&&(!$("fyr").value||r[4]===$("fyr").value)&&(!$("fst").value||r[5]===$("fst").value));
+ if(sort.k!==null)rows.sort((a,b)=>String(a[sort.k]).localeCompare(String(b[sort.k]),"th",{numeric:true})*sort.d);
+ $("th").innerHTML="<tr>"+H[view].map((h,i)=>`<th data-k="${i}">${h}${sort.k===i?(sort.d>0?" ▲":" ▼"):""}</th>`).join("")+"</tr>";
+ $("tb").innerHTML=rows.map(r=>isS?`<tr><td>${r[0]}</td><td>${E(r[1])}</td><td>${E(r[2])}</td><td><span class="tg">${E(r[3])}</span></td><td>${r[4]}</td><td class="${stc(r[5])}">${E(r[5])}</td><td>${E(r[6])}</td><td><a href="${E(r[7])}" target="_blank" rel="noopener">เปิด</a></td></tr>`:`<tr>${r.map(c=>`<td>${E(c)}</td>`).join("")}</tr>`).join("")||`<tr><td colspan="8">ไม่พบข้อมูล</td></tr>`;
+ $("cnt").textContent=`แสดง ${rows.length} รายการ`;
+ $("nt").textContent=isS?"หมายเหตุ: อ่านเนื้อหาจริงแล้ว 6 ลิงก์ (ลำดับ 2, 7, 15, 16, 17, 18); Reuters ถูกบล็อก; ที่เหลือข้อมูลมาจากชื่อ/URL ควรตรวจสอบก่อนอ้างอิง":"ข้อเท็จจริงมาจากลิงก์ที่อ่านเนื้อหาแล้วเท่านั้น";
+}
+document.addEventListener("click",e=>{const t=e.target.closest("th");if(t){const k=+t.dataset.k;sort=sort.k===k?{k,d:-sort.d}:{k,d:1};render()}});
+["q","fty","fyr","fst"].forEach(i=>$(i).addEventListener("input",render));
+$("t1").onclick=()=>{view="s";sort={k:null,d:1};$("t1").className="on";$("t2").className="";render()};
+$("t2").onclick=()=>{view="f";sort={k:null,d:1};$("t2").className="on";$("t1").className="";render()};
+render();
+</script></body></html>
