@@ -82,7 +82,7 @@ function render(){
  $("th").innerHTML="<tr>"+H[view].map((h,i)=>`<th data-k="${i}">${h}${sort.k===i?(sort.d>0?" ▲":" ▼"):""}</th>`).join("")+"</tr>";
  $("tb").innerHTML=rows.map(r=>isS?`<tr><td>${r[0]}</td><td>${E(r[1])}</td><td>${E(r[2])}</td><td><span class="tg">${E(r[3])}</span></td><td>${r[4]}</td><td class="${stc(r[5])}">${E(r[5])}</td><td>${E(r[6])}</td><td><a href="${E(r[7])}" target="_blank" rel="noopener">เปิด</a></td></tr>`:`<tr>${r.map(c=>`<td>${E(c)}</td>`).join("")}</tr>`).join("")||`<tr><td colspan="8">ไม่พบข้อมูล</td></tr>`;
  $("cnt").textContent=`แสดง ${rows.length} รายการ`;
- $("nt").textContent=isS?"หมายเหตุ: ให้ Ai อ่านให้ได้นะ
+ $("nt").textContent=isS?"หมายเหตุ: ให้ Ai อ่านให้ได้นะ";
 }
 document.addEventListener("click",e=>{const t=e.target.closest("th");if(t){const k=+t.dataset.k;sort=sort.k===k?{k,d:-sort.d}:{k,d:1};render()}});
 ["q","fty","fyr","fst"].forEach(i=>$(i).addEventListener("input",render));
