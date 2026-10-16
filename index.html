@@ -26,7 +26,7 @@ a{color:var(--ac)}.note{color:var(--mut);font-size:13px;margin-top:12px}
 .hide{display:none}
 </style></head><body><div class="w">
 <h1>แหล่งข้อมูล: Microsoft × Nokia</h1>
-<p class="s">รวม 18 ลิงก์ ค้นหา กรอง และเรียงลำดับได้ (คลิกหัวคอลัมน์เพื่อเรียง)</p>
+<p class="s">รวม 18 ลิงก์ ค้นหา กรองได้จ้า (คลิกหัวคอลัมน์เพื่อเรียงน้าา)</p>
 <div class="tabs"><button id="t1" class="on">แหล่งข้อมูล (18)</button><button id="t2">อันนี้Aiสรุปแบบไวๆ</button></div>
 <div class="bar"><input id="q" placeholder="ค้นหา เช่น Nokia, impairment, 2015..."><select id="fty"><option value="">ทุกประเภท</option></select><select id="fyr"><option value="">ทุกปี</option></select><select id="fst"><option value="">ทุกสถานะ</option></select></div>
 <div class="cnt" id="cnt"></div>
@@ -82,7 +82,7 @@ function render(){
  $("th").innerHTML="<tr>"+H[view].map((h,i)=>`<th data-k="${i}">${h}${sort.k===i?(sort.d>0?" ▲":" ▼"):""}</th>`).join("")+"</tr>";
  $("tb").innerHTML=rows.map(r=>isS?`<tr><td>${r[0]}</td><td>${E(r[1])}</td><td>${E(r[2])}</td><td><span class="tg">${E(r[3])}</span></td><td>${r[4]}</td><td class="${stc(r[5])}">${E(r[5])}</td><td>${E(r[6])}</td><td><a href="${E(r[7])}" target="_blank" rel="noopener">เปิด</a></td></tr>`:`<tr>${r.map(c=>`<td>${E(c)}</td>`).join("")}</tr>`).join("")||`<tr><td colspan="8">ไม่พบข้อมูล</td></tr>`;
  $("cnt").textContent=`แสดง ${rows.length} รายการ`;
- $("nt").textContent=isS?"หมายเหตุ: อ่านเนื้อหาจริงแล้ว 6 ลิงก์ (ลำดับ 2, 7, 15, 16, 17, 18); Reuters ถูกบล็อก; ที่เหลือข้อมูลมาจากชื่อ/URL ควรตรวจสอบก่อนอ้างอิง":"ข้อเท็จจริงมาจากลิงก์ที่อ่านเนื้อหาแล้วเท่านั้น";
+ $("nt").textContent=isS?"หมายเหตุ: ให้ Ai อ่านให้ได้นะ
 }
 document.addEventListener("click",e=>{const t=e.target.closest("th");if(t){const k=+t.dataset.k;sort=sort.k===k?{k,d:-sort.d}:{k,d:1};render()}});
 ["q","fty","fyr","fst"].forEach(i=>$(i).addEventListener("input",render));
